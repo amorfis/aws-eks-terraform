@@ -6,8 +6,10 @@ terraform init
 terraform apply
 ```
 
-4. `kubectl create -f rbac.yaml`
-5. `helm init --upgrade --service-account tiller`
+4. Copy relevant part of output to `~/.kube/config`
+
+5. `kubectl create -f rbac.yaml`
+6. `helm init --upgrade --service-account tiller`
 
 The user on behalf of which terraform is run on AWS should have such policy:
 
