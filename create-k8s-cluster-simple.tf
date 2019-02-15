@@ -7,6 +7,7 @@ variable "secret_key" {}
 variable "region" {
   default = "eu-west-1"
 }
+variable "awsctl-profile" {}
 
 provider "aws" {
   version = ">= 1.47.0"
@@ -43,9 +44,13 @@ module "eks" {
   subnets      = ["${module.vpc.private_subnets}"]
   vpc_id       = "${module.vpc.vpc_id}"
 
+  kubeconfig_aws_authenticator_env_variables = {
+    AWS_PROFILE = "${var.awsctl-profile}"
+  }
+
   worker_groups = [
     {
-      instance_type = "m2.small"
+      instance_type = "t2.large"
       asg_max_size  = 1
     }
   ]

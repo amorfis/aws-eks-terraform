@@ -1,3 +1,14 @@
+1. Create user with role as below
+2. Set user API key and secret in some `*.auto.tfvars` file
+3. Run terraform:
+```
+terraform init
+terraform apply
+```
+
+4. `kubectl create -f rbac.yaml`
+5. `helm init --upgrade --service-account tiller`
+
 The user on behalf of which terraform is run on AWS should have such policy:
 
 ```
@@ -83,6 +94,7 @@ The user on behalf of which terraform is run on AWS should have such policy:
         "iam:CreatePolicy",
         "iam:CreatePolicyVersion",
         "iam:CreateRole",
+        "iam:CreateServiceLinkedRole",
         "iam:DeleteInstanceProfile",
         "iam:DeletePolicy",
         "iam:DeleteRole",
