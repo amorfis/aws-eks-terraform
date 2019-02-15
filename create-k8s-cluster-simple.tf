@@ -51,7 +51,8 @@ module "eks" {
   worker_groups = [
     {
       instance_type = "t2.large"
-      asg_max_size  = 1
+      asg_desired_capacity = "2"
+      asg_max_size  = 2
     }
   ]
 
